@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Register</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-avatar item-start>
+      <img src="assets/imgs/UserAvatar.png">
+    </ion-avatar>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Tu nombre completo"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="email" placeholder="Correo PSL"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label fixed>Sedes: </ion-label>
+    <ion-select>
+      <ion-option value="" selected="true">Seleccione...</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Celular"></ion-input>>
+  </ion-item>
+  <ion-item>
+    <h1>Vehiculos</h1>
+  </ion-item>
+  <ion-card>
+    <ion-item>
+      <ion-avatar>
+        <img src="assets/imgs/CarAvatar.png">
+      </ion-avatar>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>Marca: </ion-label>
+      <ion-select>
+        <ion-option value="" selected="true">Seleccione...</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>Color: </ion-label>
+      <ion-select>
+        <ion-option value="" selected="true">Seleccione...</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>Modelo: </ion-label>
+      <ion-select>
+        <ion-option value="" selected="true">Seleccione...</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <button ion-button color="light">Cancelar</button>
+      <button ion-button color="light">Agregar</button>
+    </ion-item>
+  </ion-card>
+  <ion-item>
+    <button ion-button round>Cancelar</button>
+    <button ion-button round>Registrarme</button>
+  </ion-item>
+</ion-content>
