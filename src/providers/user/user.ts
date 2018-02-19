@@ -16,9 +16,9 @@ export class UserProvider {
     this.baseUrl = config.backEndApiEndPoint;
   }
 
-  registerNewUser(user){
+  registerNewUser(bodyObj){
     return new Promise(resolve => {
-      const body = {user};
+      const body = bodyObj;
       this.http.post(`${this.baseUrl}/api/user`, body)
       .subscribe(res => resolve(res.json()));
     });

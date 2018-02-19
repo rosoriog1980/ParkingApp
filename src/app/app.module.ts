@@ -10,7 +10,7 @@ import { RegisterPage } from '../pages/register/register';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { UserProvider } from '../providers/user/user';
-import { APP_CONFIG, BACKEND_CONF } from './app.config'
+import { APP_CONFIG, CONF_SETTINGS } from './app.config'
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { APP_CONFIG, BACKEND_CONF } from './app.config'
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    {provide: APP_CONFIG, useValue: BACKEND_CONF},
+    {provide: APP_CONFIG, useValue: CONF_SETTINGS},
     UserProvider
   ]
 })

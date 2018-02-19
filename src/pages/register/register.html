@@ -7,26 +7,27 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
   <ion-item>
     <ion-avatar item-start>
       <img src="assets/imgs/UserAvatar.png">
     </ion-avatar>
   </ion-item>
   <ion-item>
-    <ion-input placeholder="Tu nombre completo"></ion-input>
+    <ion-input [(ngModel)]="newUser.userName" placeholder="Tu nombre completo"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-input type="email" placeholder="Correo PSL"></ion-input>
+    <ion-input [(ngModel)]= "newUser.userEmail" type="email" placeholder="Correo PSL"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label fixed>Sedes: </ion-label>
-    <ion-select>
+    <ion-select [(ngModel)]="newUser.branchOffice">
       <ion-option value="" selected="true">Seleccione...</ion-option>
+      <ion-option *ngFor="let o of branchOffices" value="{{o}}">{{o}}</ion-option>
     </ion-select>
   </ion-item>
   <ion-item>
-    <ion-input placeholder="Celular"></ion-input>>
+    <ion-input [(ngModel)]= "newUser.userTelNumber" placeholder="Celular"></ion-input>>
   </ion-item>
   <ion-item>
     <h1>Vehiculos</h1>
@@ -39,29 +40,51 @@
     </ion-item>
     <ion-item>
       <ion-label fixed>Marca: </ion-label>
-      <ion-select>
+      <ion-select [(ngModel)]="selectedBrand">
         <ion-option value="" selected="true">Seleccione...</ion-option>
+        <ion-option *ngFor="let b of brands" value="{{b}}">{{b}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label fixed>Color: </ion-label>
-      <ion-select>
+      <ion-select [(ngModel)]="selectedColor">
         <ion-option value="" selected="true">Seleccione...</ion-option>
+        <ion-option *ngFor="let c of colors" value="{{c}}">{{c}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-label fixed>Modelo: </ion-label>
-      <ion-select>
-        <ion-option value="" selected="true">Seleccione...</ion-option>
-      </ion-select>
+      <ion-label fixed>Placa: </ion-label>
+      <ion-input placeholder="HHH555" [(ngModel)]= "licencePlate"></ion-input>>
     </ion-item>
     <ion-item>
       <button ion-button color="light">Cancelar</button>
-      <button ion-button color="light">Agregar</button>
+      <button ion-button color="light" (click)="addVehiccle()">Agregar</button>
     </ion-item>
   </ion-card>
+  <ion-item *ngIf="vehicles != undefined && vehicles.length > 0">
+    <ion-list *ngFor="let v of vehicles">
+      <ion-card>
+        <ion-item>
+          <ion-avatar>
+            <img src="assets/imgs/CarAvatar.png">
+          </ion-avatar>
+        </ion-item>
+        <ion-card-content>
+          <ion-card-title>
+              {{v.vehicleBrand}}
+          </ion-card-title>
+          <p>
+            Color: {{v.vehicleColor}}
+          </p>
+          <p>
+            Placa: {{v.vehicleLicensePlate}}
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </ion-item>
   <ion-item>
     <button ion-button round>Cancelar</button>
-    <button ion-button round>Registrarme</button>
+    <button ion-button round (click)="registerNewUser()">Registrarme</button>
   </ion-item>
 </ion-content>
