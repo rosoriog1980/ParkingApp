@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Mi perfil</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content>
+  <ion-item>
+    <ion-avatar item-start>
+      <img src="assets/imgs/UserAvatar.png">
+    </ion-avatar>
+  </ion-item>
+  <ion-item>
+    <ion-label fixed>Sede: </ion-label>
+    <ion-select>
+      <ion-option value="" selected="true">Seleccione...</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Celular"></ion-input>>
+  </ion-item>
+  <ion-item>
+    <h1>Vehiculos</h1>
+  </ion-item>
+
+  <ion-card>
+    <ion-item>
+      <ion-avatar>
+        <img src="assets/imgs/CarAvatar.png">
+      </ion-avatar>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>Marca: </ion-label>
+      <ion-label fixed value="">Marca: </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>Color: </ion-label>
+      <ion-select>
+        <ion-option value="" selected="true">Seleccione...</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>Modelo: </ion-label>
+      <ion-select>
+        <ion-option value="" selected="true">Seleccione...</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-card>
+
+  <ion-item>
+    <button ion-button round>Cancelar</button>
+    <button ion-button round>Registrarme</button>
+  </ion-item>
+</ion-content>
+
