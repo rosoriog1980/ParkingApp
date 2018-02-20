@@ -6,6 +6,9 @@ import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { RegisterPage } from '../pages/register/register';
+import { MyProfilePage } from '../pages/myProfile/myProfile';
+
+import { CarCardComponent } from '../components/car-card/car-card';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -16,7 +19,8 @@ import { APP_CONFIG, CONF_SETTINGS } from './app.config'
   declarations: [
     MyApp,
     HomePage,
-    RegisterPage
+    RegisterPage,
+    MyProfilePage
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,9 @@ import { APP_CONFIG, CONF_SETTINGS } from './app.config'
   entryComponents: [
     MyApp,
     HomePage,
-    RegisterPage
+    RegisterPage,
+    MyProfilePage,
+    CarCardComponent
   ],
   providers: [
     StatusBar,
