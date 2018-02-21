@@ -24,4 +24,20 @@ export class UserProvider {
     });
   }
 
+  login(userAuth){
+    return new Promise(resolve => {
+      const body = userAuth;
+      this.http.post(`${this.baseUrl}/api/user/auth`, body)
+      .subscribe(res => resolve(res));
+    });
+  }
+
+  validateLogin(token){
+    return new Promise(resolve => {
+      const body = {usr: token};
+      this.http.post(`${this.baseUrl}/api/user/validAuth`, body)
+      .subscribe(res => resolve(res.json()));
+    });
+  }
+
 }
