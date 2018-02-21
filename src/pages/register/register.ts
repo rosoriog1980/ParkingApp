@@ -2,7 +2,6 @@ import { Component, Inject } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user'
 import { APP_CONFIG, AppConfig } from '../../app/app.config';
-import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-register',
@@ -16,7 +15,8 @@ export class RegisterPage {
   colors: String[];
   selectedBrand: String;
   selectedColor: String;
-  licencePlate: String;
+  licencePlate: String = null;
+  addCarVisible: boolean = false;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -45,7 +45,8 @@ export class RegisterPage {
       if (this.vehicles != undefined && this.vehicles.length > 0) {
         this.userService.registerNewUser({user: this.newUser, vehicles: this.vehicles})
         .then(data => {
-          this.navCtrl.setRoot(HomePage);
+          this.PresentAlert('Registro Exitoso!.');
+          this.navCtrl.pop();
         })
         .catch(err => {
           this.PresentAlert("Hubo un error, intentelo nuevamente.");
@@ -61,7 +62,7 @@ export class RegisterPage {
   addVehiccle(){
     if (this.selectedBrand != "" && this.selectedColor != "" && this.licencePlate != undefined) {
       this.vehicles.push({
-        vehicleLicensePlate: this.licencePlate,
+        vehicleLicensePlate: this.licencePlate.toUpperCase(),
         vehicleBrand: this.selectedBrand,
         vehicleColor: this.selectedColor
       });
@@ -69,6 +70,11 @@ export class RegisterPage {
     } else {
       this.PresentAlert("Hay campos obligatorios sin diligenciar!");
     }
+  }
+
+  cancelAddVehicle(){
+    this.cleanVehicleFields();
+    this.addCarVisible = false;
   }
 
   PresentAlert(message){
@@ -84,5 +90,9 @@ export class RegisterPage {
     this.licencePlate = "";
     this.selectedBrand = "";
     this.selectedColor = "";
+  }
+
+  cancel(){
+    this.navCtrl.pop();
   }
 }

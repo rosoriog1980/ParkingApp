@@ -3,11 +3,11 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Register</ion-title>
+    <ion-title>Registrarme</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-item>
     <ion-avatar item-start>
       <img src="assets/imgs/UserAvatar.png">
@@ -31,8 +31,9 @@
   </ion-item>
   <ion-item>
     <h1>Vehiculos</h1>
+    <ion-icon name="md-add-circle" item-end color="secondary" (click)="addCarVisible = !addCarVisible"></ion-icon>
   </ion-item>
-  <ion-card>
+  <ion-card *ngIf="addCarVisible || !vehicles.length > 0">
     <ion-item>
       <ion-avatar>
         <img src="assets/imgs/CarAvatar.png">
@@ -57,7 +58,7 @@
       <ion-input placeholder="HHH555" [(ngModel)]= "licencePlate"></ion-input>>
     </ion-item>
     <ion-item>
-      <button ion-button color="light">Cancelar</button>
+      <button ion-button color="light" (click)="cancelAddVehicle()">Cancelar</button>
       <button ion-button color="light" (click)="addVehiccle()">Agregar</button>
     </ion-item>
   </ion-card>
@@ -84,7 +85,7 @@
     </ion-list>
   </ion-item>
   <ion-item>
-    <button ion-button round>Cancelar</button>
+    <button ion-button round (click)="cancel()">Cancelar</button>
     <button ion-button round (click)="registerNewUser()">Registrarme</button>
   </ion-item>
 </ion-content>

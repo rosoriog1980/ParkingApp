@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <img src="assets/imgs/parqueo.png">
+  </ion-item>
+  <ion-list>
+    <ion-item>
+      <ion-input placeholder="Ingresa tu correo de PSL." [(ngModel)]="user"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="password" placeholder="contraseña" [(ngModel)]="pwd"></ion-input>
+    </ion-item>
+  </ion-list>
+  <br>
+  <br>
+  <ion-item>
+      <button ion-button clear>Olvidaste tu contraseña</button>
+      <button ion-button clear (click)="register()">Registrarse</button>
+  </ion-item>
+  <br>
+  <ion-item>
+    <button ion-button full (click)="login()">Ingresar</button>
+  </ion-item>
+</ion-content>
