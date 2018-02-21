@@ -7,13 +7,10 @@ import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { RegisterPage } from '../pages/register/register';
-<<<<<<< HEAD
 import { MyProfilePage } from '../pages/myProfile/myProfile';
 
-import { CarCardComponent } from '../components/car-card/car-card';
-=======
 import { LoginPage } from '../pages/login/login';
->>>>>>> Develop
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,11 +22,8 @@ import { APP_CONFIG, CONF_SETTINGS } from './app.config'
     MyApp,
     HomePage,
     RegisterPage,
-<<<<<<< HEAD
-    MyProfilePage
-=======
+    MyProfilePage,
     LoginPage
->>>>>>> Develop
   ],
   imports: [
     BrowserModule,
@@ -42,12 +36,8 @@ import { APP_CONFIG, CONF_SETTINGS } from './app.config'
     MyApp,
     HomePage,
     RegisterPage,
-<<<<<<< HEAD
     MyProfilePage,
-    CarCardComponent
-=======
     LoginPage
->>>>>>> Develop
   ],
   providers: [
     StatusBar,

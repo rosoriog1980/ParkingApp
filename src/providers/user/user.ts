@@ -39,5 +39,12 @@ export class UserProvider {
       .subscribe(res => resolve(res.json()));
     });
   }
+  
+  getUser(){
+    return new Promise(resolve => {
+      this.http.get(`${this.baseUrl}/api/user`)
+      .subscribe(res => resolve(res.json()));
+    });
+  }
 
 }

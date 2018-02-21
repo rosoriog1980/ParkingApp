@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserProvider } from '../../providers/user/user';
 
 @Component({
   selector: 'vehicle-list',
@@ -8,18 +9,11 @@ export class VehicleListComponent {
 
   vehicles = []
 
-  constructor() {
-    this.vehicles = [{
-      vehicleBrand : 'Mazda',
-      vehicleColor : 'Azul',
-      vehicleLicensePlate : 'AAA000'
-     },
-     {
-      vehicleBrand : 'Nissan',
-      vehicleColor : 'Negro',
-      vehicleLicensePlate : 'BBB000'
-     }
-    ]
-  }
+  constructor(
+    private userService: UserProvider) {   
 
+      this.userService.getUser().then(data =>{
+        this.vehicles = data["vehicles"];
+      })
+  }
 }
