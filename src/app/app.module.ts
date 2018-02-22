@@ -8,9 +8,10 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { RegisterPage } from '../pages/register/register';
 import { MyProfilePage } from '../pages/myProfile/myProfile';
-
 import { LoginPage } from '../pages/login/login';
 
+import { VehicleListComponent } from '../components/vehicle-list/vehicle-list'
+import { AddVehicleComponent } from "../components/add-vehicle/add-vehicle";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -23,7 +24,9 @@ import { APP_CONFIG, CONF_SETTINGS } from './app.config'
     HomePage,
     RegisterPage,
     MyProfilePage,
-    LoginPage
+    LoginPage,
+    VehicleListComponent,
+    AddVehicleComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,9 @@ import { APP_CONFIG, CONF_SETTINGS } from './app.config'
     HomePage,
     RegisterPage,
     MyProfilePage,
-    LoginPage
+    LoginPage,
+    VehicleListComponent,
+    AddVehicleComponent
   ],
   providers: [
     StatusBar,

@@ -7,13 +7,12 @@ import { UserProvider } from '../../providers/user/user';
 })
 export class VehicleListComponent {
 
-  vehicles = []
+  vehicles: any[] = [];
 
   constructor(
     private userService: UserProvider) {   
-
       this.userService.getUser().then(data =>{
-        this.vehicles = data["vehicles"];
+        this.vehicles = data[0]["vehicles"];
       })
   }
 }
