@@ -28,7 +28,7 @@ export class LoginPage {
   login(){
     this.userService.login({user: this.user, pwd: this.pwd})
     .then(data => {
-      const token: String = data._body;
+      const token: String = data["_body"];
       if (token === "") {
         this.PresentAlert('Usuario o contraseña incorrectos!.');
       }else{
@@ -47,8 +47,8 @@ export class LoginPage {
       if (val != undefined) {
         this.userService.validateLogin(val)
         .then(resul => {
-          if (resul.result) {
-            this.storage.set('loginToken', resul.newId);
+          if (resul["result"]) {
+            this.storage.set('loginToken', resul["newId"]);
             this.navCtrl.setRoot(HomePage);
           }
         })
