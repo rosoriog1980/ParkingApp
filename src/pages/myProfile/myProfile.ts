@@ -24,7 +24,8 @@ export class MyProfilePage {
 
       this.user = {
         userName: "",
-
+        userTelNumber: "",
+        vehicles: []
       };
     }
 
@@ -32,6 +33,8 @@ export class MyProfilePage {
       this.userService.getUser(this.token)
       .then(data =>{
         this.user.userName = data[0]["userName"];
+        this.user.userTelNumber = data[0]["userTelNumber"];
+        this.user.vehicles = data[0]["vehicles"];
         this.vehicles = this.user.vehicles;
       });
     }
