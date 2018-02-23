@@ -18,7 +18,7 @@ export class LoginPage {
     public navParams: NavParams,
     private userService: UserProvider,
     private alertCtrl: AlertController,
-  private storage: Storage) {
+    private storage: Storage) {
   }
 
   register(){

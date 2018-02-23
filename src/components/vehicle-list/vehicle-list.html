@@ -1,6 +1,5 @@
 
-  <h3>Mis vehiculos</h3>
-  <div *ngFor = "let vehicle of vehicles">
+  <ion-list *ngFor = "let vehicle of vehicles">
     <ion-card>
       <ion-item>
         <ion-avatar>
@@ -20,4 +19,4 @@
         <ion-label fixed>{{vehicle.vehicleLicensePlate}}</ion-label>
       </ion-item>
     </ion-card>
-  </div>
+  </ion-list>

@@ -16,7 +16,7 @@ export class RegisterPage {
   selectedBrand: String;
   selectedColor: String;
   licencePlate: String = null;
-  addCarVisible: boolean = false;
+  addCarVisible: boolean = true;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -59,22 +59,9 @@ export class RegisterPage {
     }
   }
 
-  addVehiccle(){
-    if (this.selectedBrand != "" && this.selectedColor != "" && this.licencePlate != undefined) {
-      this.vehicles.push({
-        vehicleLicensePlate: this.licencePlate.toUpperCase(),
-        vehicleBrand: this.selectedBrand,
-        vehicleColor: this.selectedColor
-      });
-      this.cleanVehicleFields();
-    } else {
-      this.PresentAlert("Hay campos obligatorios sin diligenciar!");
-    }
-  }
-
-  cancelAddVehicle(){
-    this.cleanVehicleFields();
-    this.addCarVisible = false;
+  addVehiccle(vehicle){
+      this.vehicles.push(vehicle);
+      this.addCarVisible = false;
   }
 
   PresentAlert(message){
@@ -84,12 +71,6 @@ export class RegisterPage {
       buttons: ['OK']
     });
     alert.present();
-  }
-
-  cleanVehicleFields(){
-    this.licencePlate = "";
-    this.selectedBrand = "";
-    this.selectedColor = "";
   }
 
   cancel(){

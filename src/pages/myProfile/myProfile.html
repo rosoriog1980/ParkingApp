@@ -24,10 +24,13 @@
   <ion-item>
     <ion-input placeholder="Celular"></ion-input>>
   </ion-item>
-
-  <vehicle-list></vehicle-list>
-
-  <add-vehicle></add-vehicle>
- 
+  <ion-item>
+    <h1>Mis Vehiculos</h1>
+    <ion-icon name="md-add-circle" item-end color="secondary" (click)="addCarVisible = !addCarVisible"></ion-icon>
+  </ion-item>
+  <add-vehicle [addCarVisible]="addCarVisible" (carAdded)="addVehiccle($event)" ></add-vehicle>
+  <ion-item>
+    <vehicle-list [listOfVehicles]="vehicles"></vehicle-list>
+  </ion-item>
 </ion-content>
 

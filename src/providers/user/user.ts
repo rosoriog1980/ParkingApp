@@ -1,18 +1,15 @@
 import { Injectable, Inject } from '@angular/core';
 import { APP_CONFIG, AppConfig } from '../../app/app.config';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 
-/*
-  Generated class for the UserProvider provider.
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
+
 @Injectable()
 export class UserProvider {
   private baseUrl: String;
   constructor(public http: Http,
-              @Inject(APP_CONFIG) private config: AppConfig) {
+    @Inject(APP_CONFIG) private config: AppConfig,
+    ) {
     this.baseUrl = config.backEndApiEndPoint;
   }
 
@@ -39,12 +36,14 @@ export class UserProvider {
       .subscribe(res => resolve(res.json()));
     });
   }
-  
-  getUser(){
+
+  getUser(token){
     return new Promise(resolve => {
-      this.http.get(`${this.baseUrl}/api/user`)
-      .subscribe(res => resolve(res.json()));
+      const headers = new Headers();
+      headers.append('Token', token != undefined ? token : "");
+      const options = new RequestOptions({headers: headers});
+      this.http.get(`${this.baseUrl}/api/user`, options)
+      .subscribe(res =>resolve(res.json()));
     });
   }
-
 }

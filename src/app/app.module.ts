@@ -40,9 +40,7 @@ import { APP_CONFIG, CONF_SETTINGS } from './app.config'
     HomePage,
     RegisterPage,
     MyProfilePage,
-    LoginPage,
-    VehicleListComponent,
-    AddVehicleComponent
+    LoginPage
   ],
   providers: [
     StatusBar,

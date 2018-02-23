@@ -1,6 +1,3 @@
-<ion-item>
-  <ion-icon name="md-add-circle" item-end color="secondary" (click)="addCarVisible = !addCarVisible"></ion-icon>
-</ion-item>
 <ion-card *ngIf="addCarVisible">
   <ion-item>
     <ion-avatar>
@@ -27,6 +24,6 @@
   </ion-item>
   <ion-item>
     <button ion-button color="light" (click)="cancelAddVehicle()">Cancelar</button>
-    <button ion-button color="light" (click)="addVehiccle()">Agregar</button>
+    <button ion-button color="light" (click)="newVehicle()">Agregar</button>
   </ion-item>
 </ion-card>
