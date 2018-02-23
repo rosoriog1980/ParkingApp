@@ -17,6 +17,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { UserProvider } from '../providers/user/user';
 import { APP_CONFIG, CONF_SETTINGS } from './app.config'
+import { ParkingProvider } from '../providers/parking/parking';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { APP_CONFIG, CONF_SETTINGS } from './app.config'
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {provide: APP_CONFIG, useValue: CONF_SETTINGS},
-    UserProvider
+    UserProvider,
+    ParkingProvider
   ]
 })
 export class AppModule {}
