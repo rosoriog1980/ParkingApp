@@ -10,6 +10,7 @@ import { Storage } from '@ionic/storage';
 })
 export class MyProfilePage {
   vehicles: any[] = [];
+  user: any;
   token: String;
 
   constructor(public navCtrl: NavController,
@@ -20,12 +21,18 @@ export class MyProfilePage {
       .then(val => {
         this.token = val;
       });
+
+      this.user = {
+        userName: "",
+
+      };
     }
 
     ionViewWillEnter(){
       this.userService.getUser(this.token)
       .then(data =>{
-        this.vehicles = data[0]["vehicles"];
+        this.user.userName = data[0]["userName"];
+        this.vehicles = this.user.vehicles;
       });
     }
 

@@ -7,9 +7,9 @@ import { ParkingProvider } from '../../providers/parking/parking'
   templateUrl: 'home.html'
 })
 export class HomePage {
-  
+
   parkingLots: any;
-  availableLots: any; 
+  availableLots: any;
   availableLotsQuantity: string;
 
   constructor(public navCtrl: NavController,
@@ -28,9 +28,9 @@ export class HomePage {
     this.availableLotsQuantity = this.availableLots.length();
   }
 
-  
-  ionViewWillEnter(){    
-    this.getAvailableParkingLots();
+
+  ionViewWillEnter(){
+    //this.getAvailableParkingLots();
   }
 
 }
