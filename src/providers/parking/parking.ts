@@ -1,13 +1,7 @@
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { Injectable, Inject } from '@angular/core';
 import { APP_CONFIG, AppConfig } from '../../app/app.config';
 
-/*
-  Generated class for the ParkingProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class ParkingProvider {
 
@@ -18,10 +12,13 @@ export class ParkingProvider {
       this.baseUrl = config.backEndApiEndPoint;
   }
 
-  getParkingLots(){
+  getParkingLots(token){    
     return new Promise(resolve => {
-      this.http.get(`${this.baseUrl}/api/parking`)
-      .subscribe(res => resolve(res.json()));
+      const headers = new Headers();
+      headers.append('Token', token != undefined ? token : "");
+      const options = new RequestOptions({headers: headers});
+      this.http.get(`${this.baseUrl}/api/parking`, options)
+      .subscribe(res =>resolve(res.json()));
     });
   }
 }
