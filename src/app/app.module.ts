@@ -18,6 +18,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { UserProvider } from '../providers/user/user';
 import { APP_CONFIG, CONF_SETTINGS } from './app.config'
 import { ParkingProvider } from '../providers/parking/parking';
+import { SingletonCacheProvider } from '../providers/singleton-cache/singleton-cache';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { ParkingProvider } from '../providers/parking/parking';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {provide: APP_CONFIG, useValue: CONF_SETTINGS},
     UserProvider,
-    ParkingProvider
+    ParkingProvider,
+    SingletonCacheProvider
   ]
 })
 export class AppModule {}

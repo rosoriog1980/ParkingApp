@@ -15,23 +15,39 @@
       <img src="assets/imgs/UserAvatar.png">
     </ion-avatar>
     {{user.userName}}
+    <button ion-button item-end icon-left outline (click)="editMode = !editMode">
+      <ion-icon [name]="editMode ? 'ios-close' : 'ios-create'" item-end></ion-icon>
+      {{editMode ? "Cancelar" : "Editar"}}
+    </button>
   </ion-item>
   <ion-item>
     <ion-label fixed>Sede: </ion-label>
-    <ion-select>
+    <ion-label *ngIf="!editMode">{{user.branchOffice}}</ion-label>
+    <ion-select *ngIf="editMode">
       <ion-option value="" selected="true">Seleccione...</ion-option>
     </ion-select>
   </ion-item>
   <ion-item>
-    <ion-input placeholder="Celular"></ion-input>>
+    <ion-label fixed>Celular: </ion-label>
+    <ion-label *ngIf="!editMode">{{user.userTelNumber}}</ion-label>
+    <ion-input placeholder="Celular" *ngIf="editMode" [(ngModel)]="user.userTelNumber"></ion-input>>
   </ion-item>
   <ion-item>
     <h1>Mis Vehiculos</h1>
-    <ion-icon name="md-add-circle" item-end color="secondary" (click)="addCarVisible = !addCarVisible"></ion-icon>
+    <ion-icon name="md-add-circle" item-end color="secondary" (click)="addCarVisible = !addCarVisible" *ngIf="editMode"></ion-icon>
   </ion-item>
   <add-vehicle [addCarVisible]="addCarVisible" (carAdded)="addVehiccle($event)" ></add-vehicle>
   <ion-item>
     <vehicle-list [listOfVehicles]="vehicles"></vehicle-list>
+  </ion-item>
+  <ion-item *ngIf="editMode">
+    <button ion-button round>Guardar</button>
+  </ion-item>
+  <ion-item *ngIf="!editMode">
+    <button ion-button full icon-left round (click)="logout()">
+      <ion-icon name="ios-exit"></ion-icon>
+      Cerrar Sesión
+    </button>
   </ion-item>
 </ion-content>
 

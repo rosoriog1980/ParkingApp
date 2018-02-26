@@ -3,7 +3,7 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { UserProvider } from '../../providers/user/user';
 import { HomePage } from '../home/home';
-import { Storage } from '@ionic/storage';
+import { SingletonCacheProvider } from '../../providers/singleton-cache/singleton-cache';
 
 
 @Component({
@@ -18,7 +18,7 @@ export class LoginPage {
     public navParams: NavParams,
     private userService: UserProvider,
     private alertCtrl: AlertController,
-    private storage: Storage) {
+    private singletonCache: SingletonCacheProvider) {
   }
 
   register(){
@@ -32,8 +32,10 @@ export class LoginPage {
       if (token === "") {
         this.PresentAlert('Usuario o contraseña incorrectos!.');
       }else{
-        this.storage.set('loginToken', token);
-        this.navCtrl.setRoot(HomePage);
+        this.singletonCache.setLoginToken(token)
+        .then(val => {
+          this.setCacheUser(val);
+        });
       }
     })
     .catch(err => {
@@ -42,14 +44,16 @@ export class LoginPage {
   }
 
   ionViewWillEnter(){
-    this.storage.get('loginToken')
+    this.singletonCache.getLoginToken()
     .then(val => {
       if (val != undefined) {
         this.userService.validateLogin(val)
         .then(resul => {
           if (resul["result"]) {
-            this.storage.set('loginToken', resul["newId"]);
-            this.navCtrl.setRoot(HomePage);
+            this.singletonCache.setLoginToken(resul["newId"])
+            .then(val =>{
+              this.setCacheUser(val);
+            });
           }
         })
       }
@@ -65,4 +69,13 @@ export class LoginPage {
     alert.present();
   }
 
+  setCacheUser(token){
+    this.userService.getUser(token)
+    .then(user => {
+      this.singletonCache.setUser(user)
+      .then(val => {
+        this.navCtrl.setRoot(HomePage);
+      });
+    });
+  }
 }

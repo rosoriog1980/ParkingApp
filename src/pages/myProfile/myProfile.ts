@@ -1,8 +1,8 @@
-import { Component, Inject } from '@angular/core';
-import { APP_CONFIG, AppConfig } from '../../app/app.config';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavController, NavParams} from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
-import { Storage } from '@ionic/storage';
+import { SingletonCacheProvider } from '../../providers/singleton-cache/singleton-cache';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-myProfile',
@@ -12,31 +12,42 @@ export class MyProfilePage {
   vehicles: any[] = [];
   user: any;
   token: String;
+  editMode: boolean = false;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private userService: UserProvider,
-    private storage: Storage) {
-      this.storage.get('loginToken')
-      .then(val => {
-        this.token = val;
-      });
+    private singletonCache: SingletonCacheProvider) {
 
       this.user = {
         userName: "",
         userTelNumber: "",
+        branchOffice: "",
         vehicles: []
       };
     }
 
-    ionViewWillEnter(){
-      this.userService.getUser(this.token)
-      .then(data =>{
-        this.user.userName = data[0]["userName"];
-        this.user.userTelNumber = data[0]["userTelNumber"];
-        this.user.vehicles = data[0]["vehicles"];
-        this.vehicles = this.user.vehicles;
+    logout(){
+      this.singletonCache.removeLoginToken()
+      .then(val => {
+        this.navCtrl.setRoot(LoginPage);
       });
     }
 
+    ionViewWillEnter(){
+      this.singletonCache.getUser()
+      .then(usr => {
+        this.user = usr[0];
+        this.vehicles = this.user.vehicles;
+      });
+
+    }
+
+    ionViewDidLoad(){
+      this.singletonCache.getLoginToken()
+      .then(val => {
+        this.token = val.toString();
+      });
+
+    }
 }

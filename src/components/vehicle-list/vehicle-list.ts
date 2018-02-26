@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { UserProvider } from '../../providers/user/user';
 
 @Component({
   selector: 'vehicle-list',
@@ -9,8 +8,7 @@ import { UserProvider } from '../../providers/user/user';
 export class VehicleListComponent {
   @Input('listOfVehicles') vehicles;
 
-  constructor(
-    private userService: UserProvider) {
+  constructor() {
 
   }
 
