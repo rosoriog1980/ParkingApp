@@ -23,17 +23,17 @@ export class HomePage {
     private userService: UserProvider,
     private singletonCache: SingletonCacheProvider) {
     }
-    
+
   ionViewDidLoad(){
     this.singletonCache.getLoginToken()
     .then(val => {
       this.token = val.toString();
     });
-    
+
     this.singletonCache.getUser()
     .then(usr => {
-      var user = usr[0];
-      this.userName = user.userName;
+      var user = usr;
+      this.userName = user["userName"];
     });
   }
 
@@ -43,7 +43,7 @@ export class HomePage {
 
       this.availableLots = this.find_in_object(this.parkingLots, {parkingStatus: 'AVAILABLE'});
 
-      
+
       var floors = [];
 
       for(var lot in this.availableLots){
@@ -60,7 +60,7 @@ export class HomePage {
 
         if(availableLotsInFloor.length == 1)
           this.parkingMessage = this.parkingMessage.concat(", hay " + availableLotsInFloor.length + " parqueo disponible en el sotano " + floors[floor]);
-          
+
         if(availableLotsInFloor.length > 1)
         this.parkingMessage = this.parkingMessage.concat(", hay " + availableLotsInFloor.length + " parqueos disponibles en el sotano " + floors[floor]);
       }
@@ -77,7 +77,7 @@ export class HomePage {
       return Object.keys(my_criteria).every(function(c) {
         return obj[c] == my_criteria[c];
       });
-    });  
+    });
   }
 
 }
