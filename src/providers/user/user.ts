@@ -7,6 +7,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 @Injectable()
 export class UserProvider {
   private baseUrl: String;
+
   constructor(public http: Http,
     @Inject(APP_CONFIG) private config: AppConfig,
     ) {
@@ -17,6 +18,17 @@ export class UserProvider {
     return new Promise(resolve => {
       const body = bodyObj;
       this.http.post(`${this.baseUrl}/api/user`, body)
+      .subscribe(res => resolve(res.json()));
+    });
+  }
+
+  updateUser(user, token){
+    return new Promise(resolve => {
+      const body = {user: user};
+      const headers = new Headers();
+      headers.append('Token', token != undefined ? token : "");
+      const options = new RequestOptions({headers: headers});
+      this.http.put(`${this.baseUrl}/api/user`,body, options)
       .subscribe(res => resolve(res.json()));
     });
   }

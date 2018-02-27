@@ -72,7 +72,7 @@ export class LoginPage {
   setCacheUser(token){
     this.userService.getUser(token)
     .then(user => {
-      this.singletonCache.setUser(user)
+      this.singletonCache.setUser(user[0])
       .then(val => {
         this.navCtrl.setRoot(HomePage);
       });

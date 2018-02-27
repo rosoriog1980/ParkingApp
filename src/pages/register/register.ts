@@ -11,11 +11,6 @@ export class RegisterPage {
   newUser: any = {};
   branchOffices: any[];
   vehicles: any[] = [];
-  brands: String[];
-  colors: String[];
-  selectedBrand: String;
-  selectedColor: String;
-  licencePlate: String = null;
   addCarVisible: boolean = true;
 
   constructor(public navCtrl: NavController,
@@ -33,10 +28,6 @@ export class RegisterPage {
       userTelNumber: "",
       branchOffice: ""
     }
-
-    this.brands = ['Nissan', 'Toyota', 'Chevrolet'];
-
-    this.colors = ['Blanco', 'Negro', 'Rojo', 'Gris'];
   }
 
   registerNewUser(){
