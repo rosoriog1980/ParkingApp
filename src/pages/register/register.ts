@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user'
+import { SharedParamsProvider } from '../../providers/shared-params/shared-params';
 import { APP_CONFIG, AppConfig } from '../../app/app.config';
 
 @Component({
@@ -9,16 +10,15 @@ import { APP_CONFIG, AppConfig } from '../../app/app.config';
 })
 export class RegisterPage {
   newUser: any = {};
-  branchOffices: any[];
+  branchOffices: any;
   vehicles: any[] = [];
   addCarVisible: boolean = true;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public userService : UserProvider,
-    @Inject(APP_CONFIG) private config: AppConfig,
+    public userService: UserProvider,
+    public paramService: SharedParamsProvider,
     private alertCtrl: AlertController) {
-    this.branchOffices = config.branchOffices;
   }
 
   ionViewWillEnter(){
@@ -26,8 +26,13 @@ export class RegisterPage {
       userName: "",
       userEmail: "",
       userTelNumber: "",
-      branchOffice: ""
-    }
+      branchOfficeId: ""
+    };
+
+    this.paramService.getBranchOffices()
+    .then(data => {
+      this.branchOffices = data;
+    });
   }
 
   registerNewUser(){

@@ -23,9 +23,9 @@
   <ion-item>
     <ion-label fixed>Sede: </ion-label>
     <ion-label *ngIf="!editMode">{{user.branchOffice}}</ion-label>
-    <ion-select *ngIf="editMode" [(ngModel)]="user.branchOffice">
+    <ion-select *ngIf="editMode" [(ngModel)]="user.branchOfficeId">
       <ion-option value="" selected="true">Seleccione...</ion-option>
-      <ion-option *ngFor="let o of branchOffices" value="{{o}}">{{o}}</ion-option>
+      <ion-option *ngFor="let o of branchOffices" value="{{o._id}}">{{o.officeName}}</ion-option>
     </ion-select>
   </ion-item>
   <ion-item>

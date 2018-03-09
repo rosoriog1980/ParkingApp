@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { NavController, NavParams, AlertController} from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { SingletonCacheProvider } from '../../providers/singleton-cache/singleton-cache';
+import { SharedParamsProvider } from '../../providers/shared-params/shared-params';
 import { LoginPage } from '../login/login';
 import { APP_CONFIG, AppConfig } from '../../app/app.config';
 
@@ -11,7 +12,7 @@ import { APP_CONFIG, AppConfig } from '../../app/app.config';
 })
 export class MyProfilePage {
   vehicles: any[] = [];
-  branchOffices: any[];
+  branchOffices: any;
   user: any;
   token: String;
   editMode: boolean = false;
@@ -21,17 +22,18 @@ export class MyProfilePage {
     public navParams: NavParams,
     private userService: UserProvider,
     private singletonCache: SingletonCacheProvider,
-    @Inject(APP_CONFIG) private config: AppConfig,
+    public paramService: SharedParamsProvider,
     private alertCtrl: AlertController) {
 
       this.user = {
         userName: "",
         userTelNumber: "",
         branchOffice: "",
+        branchOfficeId: "",
         vehicles: []
       };
 
-      this.branchOffices = config.branchOffices;
+      //this.branchOffices = config.branchOffices;
     }
 
     modifyUser(){
@@ -62,6 +64,10 @@ export class MyProfilePage {
     }
 
     ionViewWillEnter(){
+      this.paramService.getBranchOffices()
+      .then(data => {
+        this.branchOffices = data;
+      });
       this.setInitialState();
     }
 
@@ -91,6 +97,11 @@ export class MyProfilePage {
       .then(usr => {
         this.user = Object.create(usr);
         this.vehicles = Object.assign([], this.user.vehicles);
+        if (this.branchOffices !== undefined) {
+          this.user.branchOffice = this.branchOffices.find(o => {
+            return o._id === this.user.branchOfficeId;
+          })["officeName"];
+        }
       });
     }
 }

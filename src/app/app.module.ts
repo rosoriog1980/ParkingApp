@@ -19,6 +19,7 @@ import { UserProvider } from '../providers/user/user';
 import { APP_CONFIG, CONF_SETTINGS } from './app.config'
 import { ParkingProvider } from '../providers/parking/parking';
 import { SingletonCacheProvider } from '../providers/singleton-cache/singleton-cache';
+import { SharedParamsProvider } from '../providers/shared-params/shared-params';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { SingletonCacheProvider } from '../providers/singleton-cache/singleton-c
     {provide: APP_CONFIG, useValue: CONF_SETTINGS},
     UserProvider,
     ParkingProvider,
-    SingletonCacheProvider
+    SingletonCacheProvider,
+    SharedParamsProvider
   ]
 })
 export class AppModule {}

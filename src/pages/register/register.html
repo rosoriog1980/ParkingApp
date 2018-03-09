@@ -21,9 +21,9 @@
   </ion-item>
   <ion-item>
     <ion-label fixed>Sedes: </ion-label>
-    <ion-select [(ngModel)]="newUser.branchOffice">
+    <ion-select [(ngModel)]="newUser.branchOfficeId">
       <ion-option value="" selected="true">Seleccione...</ion-option>
-      <ion-option *ngFor="let o of branchOffices" value="{{o}}">{{o}}</ion-option>
+      <ion-option *ngFor="let o of branchOffices" value="{{o._id}}">{{o.officeName}}</ion-option>
     </ion-select>
   </ion-item>
   <ion-item>
