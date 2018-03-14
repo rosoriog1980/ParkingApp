@@ -1,10 +1,9 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController} from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { SingletonCacheProvider } from '../../providers/singleton-cache/singleton-cache';
 import { SharedParamsProvider } from '../../providers/shared-params/shared-params';
 import { LoginPage } from '../login/login';
-import { APP_CONFIG, AppConfig } from '../../app/app.config';
 
 @Component({
   selector: 'page-myProfile',
@@ -32,8 +31,6 @@ export class MyProfilePage {
         branchOfficeId: "",
         vehicles: []
       };
-
-      //this.branchOffices = config.branchOffices;
     }
 
     modifyUser(){
@@ -99,7 +96,7 @@ export class MyProfilePage {
         this.vehicles = Object.assign([], this.user.vehicles);
         if (this.branchOffices !== undefined) {
           this.user.branchOffice = this.branchOffices.find(o => {
-            return o._id === this.user.branchOfficeId;
+            return o._id === this.user.branchOfficeId["_id"];
           })["officeName"];
         }
       });

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ParkingProvider } from '../../providers/parking/parking';
-import { UserProvider } from '../../providers/user/user';
 import { SingletonCacheProvider } from '../../providers/singleton-cache/singleton-cache';
 
 @Component({
@@ -13,10 +12,11 @@ export class HomePage {
   token: string;
   userName: string;
   branchOffice: string;
+  branchOfficeId: string;
+  zones: any = [];
 
   constructor(public navCtrl: NavController,
     private parkingService: ParkingProvider,
-    private userService: UserProvider,
     private singletonCache: SingletonCacheProvider) {
     }
 
@@ -30,10 +30,15 @@ export class HomePage {
     .then(usr => {
       this.userName = usr["userName"];
       this.branchOffice = usr["branchOfficeId"]["officeName"];
+      this.branchOfficeId = usr["branchOfficeId"]["_id"];
     });
   }
 
   ionViewWillEnter(){
+    this.parkingService.getHomeInfo(this.token, this.branchOfficeId)
+    .then(resul => {
+      this.zones = resul;
+    });
   }
 
   find_in_object(my_object, my_criteria){
