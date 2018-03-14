@@ -10,16 +10,19 @@ export class SharedParamsProvider {
   constructor(public http: Http,
     @Inject(APP_CONFIG) public config: AppConfig) {
     this.baseUrl = config.backEndApiEndPoint;
-
-    this.http.get(`${this.baseUrl}/api/branchOffice`)
-    .subscribe(res => {
-      this.branchOffices = res.json();
-    });
   }
 
   getBranchOffices(){
     return new Promise(resolve => {
-      resolve(this.branchOffices);
+      if (this.branchOffices === undefined) {
+        this.http.get(`${this.baseUrl}/api/branchOffice`)
+        .subscribe(res => {
+          this.branchOffices = res.json();
+          resolve(this.branchOffices);
+        });
+      }else{
+        resolve(this.branchOffices);
+      }
     });
   }
 
