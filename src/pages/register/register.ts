@@ -3,6 +3,7 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user'
 import { SharedParamsProvider } from '../../providers/shared-params/shared-params';
 import { APP_CONFIG, AppConfig } from '../../app/app.config';
+import { WelcomePage } from '../welcome/welcome';
 
 @Component({
   selector: 'page-register',
@@ -41,8 +42,7 @@ export class RegisterPage {
       if (this.vehicles != undefined && this.vehicles.length > 0) {
         this.userService.registerNewUser({user: this.newUser, vehicles: this.vehicles})
         .then(data => {
-          this.PresentAlert('Registro Exitoso!.');
-          this.navCtrl.pop();
+          this.navCtrl.push(WelcomePage);
         })
         .catch(err => {
           this.PresentAlert("Hubo un error, intentelo nuevamente.");

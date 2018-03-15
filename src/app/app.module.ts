@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { RegisterPage } from '../pages/register/register';
 import { MyProfilePage } from '../pages/myProfile/myProfile';
 import { LoginPage } from '../pages/login/login';
+import { WelcomePage } from '../pages/welcome/welcome';
 
 import { VehicleListComponent } from '../components/vehicle-list/vehicle-list'
 import { AddVehicleComponent } from "../components/add-vehicle/add-vehicle";
@@ -28,6 +29,7 @@ import { SharedParamsProvider } from '../providers/shared-params/shared-params';
     RegisterPage,
     MyProfilePage,
     LoginPage,
+    WelcomePage,
     VehicleListComponent,
     AddVehicleComponent
   ],
@@ -43,7 +45,8 @@ import { SharedParamsProvider } from '../providers/shared-params/shared-params';
     HomePage,
     RegisterPage,
     MyProfilePage,
-    LoginPage
+    LoginPage,
+    WelcomePage
   ],
   providers: [
     StatusBar,
