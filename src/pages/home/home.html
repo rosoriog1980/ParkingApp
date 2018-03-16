@@ -13,17 +13,17 @@
   <ion-card>
     <ion-item>
       <ion-avatar item-start>
-          <img src="assets/imgs/UserAvatar.png">
-        </ion-avatar>
-        <h2>{{userName}}</h2>
-      </ion-item>
+        <img src="assets/imgs/UserAvatar.png">
+      </ion-avatar>
+      <h2>{{userName}}</h2>
+    </ion-item>
     <ion-card-content>
       <p>Tenemos parqueaderos disponibles en este momento.</p>
     </ion-card-content>
   </ion-card>
   <br><br><br>
   <ion-list *ngFor="let zone of zones">
-    <ion-card>
+    <ion-card (click)="clickDetails(zone)">
       <ion-card-header>
         {{zone.zoneName | uppercase}}
       </ion-card-header>

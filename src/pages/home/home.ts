@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ParkingProvider } from '../../providers/parking/parking';
 import { SingletonCacheProvider } from '../../providers/singleton-cache/singleton-cache';
+import { ParkingDetailPage } from '../parking-detail/parking-detail';
 
 @Component({
   selector: 'page-home',
@@ -49,4 +50,9 @@ export class HomePage {
     });
   }
 
+  clickDetails(zone){
+    this.navCtrl.push(ParkingDetailPage, {
+      zone: zone
+    });
+  }
 }

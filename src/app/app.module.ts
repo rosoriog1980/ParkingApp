@@ -21,6 +21,7 @@ import { APP_CONFIG, CONF_SETTINGS } from './app.config'
 import { ParkingProvider } from '../providers/parking/parking';
 import { SingletonCacheProvider } from '../providers/singleton-cache/singleton-cache';
 import { SharedParamsProvider } from '../providers/shared-params/shared-params';
+import { ParkingDetailPage } from '../pages/parking-detail/parking-detail';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { SharedParamsProvider } from '../providers/shared-params/shared-params';
     MyProfilePage,
     LoginPage,
     WelcomePage,
+    ParkingDetailPage,
     VehicleListComponent,
     AddVehicleComponent
   ],
@@ -46,7 +48,8 @@ import { SharedParamsProvider } from '../providers/shared-params/shared-params';
     RegisterPage,
     MyProfilePage,
     LoginPage,
-    WelcomePage
+    WelcomePage,
+    ParkingDetailPage
   ],
   providers: [
     StatusBar,

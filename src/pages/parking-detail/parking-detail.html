@@ -1,0 +1,25 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{zone.zoneName | uppercase}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid >
+    <ion-row *ngFor="let p of parkings">
+      <ion-col col-5 *ngFor="let s of p.parkings">
+        <div>{{'#' + s.parkingNumber}}</div>
+        <img [src]="s.parkingStatus === 'AVAILABLE' ? 'assets/imgs/empty.png' : 'assets/imgs/Occupied.png'">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>

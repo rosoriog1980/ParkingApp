@@ -12,11 +12,13 @@ export class ParkingProvider {
       this.baseUrl = config.backEndApiEndPoint;
   }
 
-  getParkingLots(token){
+  getParkingLots(token, zoneId){
     return new Promise(resolve => {
+      const params = new URLSearchParams();
       const headers = new Headers();
       headers.append('Token', token != undefined ? token : "");
-      const options = new RequestOptions({headers: headers});
+      params.append('zoneId', zoneId);
+      const options = new RequestOptions({headers: headers, params: params});
       this.http.get(`${this.baseUrl}/api/parking`, options)
       .subscribe(res =>resolve(res.json()));
     });
