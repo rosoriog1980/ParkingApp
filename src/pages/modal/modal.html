@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{data.parking.parkingZone.zoneName + ' Celda ' +  data.cell.parkingNumber}}</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="closeModal()">Cerrar</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <br>
+  </ion-item>
+  <ion-item>
+    <p>Selecciona el vehículo a estacionar.</p>
+  </ion-item>
+  <ion-item>
+    <vehicle-list [listOfVehicles]="vehicles"></vehicle-list>
+  </ion-item>
+  <ion-item>
+    <p>Escanea el código QR para activar la celda.</p>
+  </ion-item>
+  <ion-item>
+    <img src="assets/imgs/QR.png">
+  </ion-item>
+
+</ion-content>

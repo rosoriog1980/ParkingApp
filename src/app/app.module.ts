@@ -22,6 +22,7 @@ import { ParkingProvider } from '../providers/parking/parking';
 import { SingletonCacheProvider } from '../providers/singleton-cache/singleton-cache';
 import { SharedParamsProvider } from '../providers/shared-params/shared-params';
 import { ParkingDetailPage } from '../pages/parking-detail/parking-detail';
+import { ModalPage } from '../pages/modal/modal';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ParkingDetailPage } from '../pages/parking-detail/parking-detail';
     WelcomePage,
     ParkingDetailPage,
     VehicleListComponent,
-    AddVehicleComponent
+    AddVehicleComponent,
+    ModalPage
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ import { ParkingDetailPage } from '../pages/parking-detail/parking-detail';
     MyProfilePage,
     LoginPage,
     WelcomePage,
-    ParkingDetailPage
+    ParkingDetailPage,
+    ModalPage
   ],
   providers: [
     StatusBar,

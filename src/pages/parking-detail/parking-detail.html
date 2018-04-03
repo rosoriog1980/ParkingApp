@@ -14,9 +14,9 @@
 <ion-content padding>
   <ion-grid >
     <ion-row *ngFor="let p of parkings">
-      <ion-col col-5 *ngFor="let s of p.parkings">
-        <div>{{'#' + s.parkingNumber}}</div>
-        <img [src]="s.parkingStatus === 'AVAILABLE' ? 'assets/imgs/empty.png' : 'assets/imgs/Occupied.png'">
+      <ion-col col-5 *ngFor="let c of p.parkings">
+        <div>{{'#' + c.parkingNumber}}</div>
+        <img [src]="c.parkingStatus === 'AVAILABLE' ? 'assets/imgs/empty.png' : 'assets/imgs/Occupied.png'" (click)="showModal(c, p)">
       </ion-col>
     </ion-row>
   </ion-grid>

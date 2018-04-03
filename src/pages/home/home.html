@@ -29,7 +29,7 @@
       </ion-card-header>
       <ion-card-content>
         <ion-item>
-          <ion-badge item-end>{{zone.count}}</ion-badge>
+          <ion-badge item-end [color]="zone.count > 0 ? 'secondary' : 'danger'">{{zone.count}}</ion-badge>
         </ion-item>
       </ion-card-content>
     </ion-card>

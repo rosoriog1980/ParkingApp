@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { ParkingProvider } from '../../providers/parking/parking';
 import { SingletonCacheProvider } from '../../providers/singleton-cache/singleton-cache';
+import { ModalPage } from '../modal/modal';
 
 @Component({
   selector: 'page-parking-detail',
@@ -16,7 +17,8 @@ export class ParkingDetailPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private parkingService: ParkingProvider,
-    private singletonCache: SingletonCacheProvider) {
+    private singletonCache: SingletonCacheProvider,
+    public modalCtrl: ModalController) {
       this.zone = this.navParams.get('zone');
   }
 
@@ -37,6 +39,16 @@ export class ParkingDetailPage {
     .then(resul => {
       this.parkings = resul;
     });
+  }
+
+  showModal(cell, parking){
+    const modalData = {
+      cell: cell,
+      parking: parking,
+      user: this.user
+    };
+    const modal = this.modalCtrl.create(ModalPage,{data: modalData});
+    modal.present();
   }
 
 }
