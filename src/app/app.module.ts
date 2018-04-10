@@ -10,6 +10,7 @@ import { RegisterPage } from '../pages/register/register';
 import { MyProfilePage } from '../pages/myProfile/myProfile';
 import { LoginPage } from '../pages/login/login';
 import { WelcomePage } from '../pages/welcome/welcome';
+import { ConfirmationPage } from '../pages/confirmation/confirmation';
 
 import { VehicleListComponent } from '../components/vehicle-list/vehicle-list'
 import { AddVehicleComponent } from "../components/add-vehicle/add-vehicle";
@@ -35,7 +36,8 @@ import { ModalPage } from '../pages/modal/modal';
     ParkingDetailPage,
     VehicleListComponent,
     AddVehicleComponent,
-    ModalPage
+    ModalPage,
+    ConfirmationPage
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ import { ModalPage } from '../pages/modal/modal';
     LoginPage,
     WelcomePage,
     ParkingDetailPage,
-    ModalPage
+    ModalPage,
+    ConfirmationPage
   ],
   providers: [
     StatusBar,

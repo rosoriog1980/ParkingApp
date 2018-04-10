@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { ParkingProvider } from '../../providers/parking/parking';
-import { HomePage } from '../home/home';
+import { ConfirmationPage } from '../confirmation/confirmation';
 import { UserProvider } from '../../providers/user/user';
 import { SingletonCacheProvider } from '../../providers/singleton-cache/singleton-cache';
 
@@ -46,7 +46,7 @@ export class ModalPage {
       };
       this.singletonCache.setMyLocation(myLocationData)
       .then(val => {
-        this.navCtrl.setRoot(HomePage);
+        this.navCtrl.setRoot(ConfirmationPage);
       });
     });
   }
