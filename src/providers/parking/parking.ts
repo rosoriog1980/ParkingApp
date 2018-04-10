@@ -35,4 +35,19 @@ export class ParkingProvider {
       .subscribe(res =>resolve(res.json()));
     });
   }
+
+  changeParkingStatus(token, status, userId, parkingId){
+    return new Promise(resolve => {
+      const headers = new Headers();
+      const body = {
+        status: status,
+        userId: userId,
+        spaceId: parkingId
+      };
+      headers.append('Token', token != undefined ? token : "");
+      const options = new RequestOptions({headers: headers});
+      this.http.put(`${this.baseUrl}/api/parking`, body, options)
+      .subscribe(res => resolve(res.json()));
+    });
+  }
 }

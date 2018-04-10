@@ -1,6 +1,6 @@
 
   <ion-list *ngFor = "let vehicle of vehicles">
-    <ion-card>
+    <ion-card (click)="selectVehicle(vehicle)">
       <ion-item>
         <ion-avatar>
           <img src="assets/imgs/CarAvatar.png">

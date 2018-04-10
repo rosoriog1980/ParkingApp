@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'vehicle-list',
@@ -7,9 +7,14 @@ import { Component, Input } from '@angular/core';
 
 export class VehicleListComponent {
   @Input('listOfVehicles') vehicles;
+  @Output() carSelected = new EventEmitter();
 
   constructor() {
 
+  }
+
+  selectVehicle(vehicle){
+    this.carSelected.emit(vehicle);
   }
 
 }

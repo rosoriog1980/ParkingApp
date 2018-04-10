@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 export class SingletonCacheProvider {
   token: String;
   user: any;
+  myLocation: any;
 
   constructor(private storage: Storage) {
       this.storage.get('loginToken')
@@ -54,6 +55,28 @@ export class SingletonCacheProvider {
   getUser(){
     return new Promise(resolve => {
       resolve(this.user);
+    });
+  }
+
+  setMyLocation(val){
+    return new Promise(resolve => {
+      this.storage.set('myLocation', val);
+      this.myLocation = val;
+      resolve(val);
+    });
+  }
+
+  getMyLocation(){
+    return new Promise(resolve => {
+      if (this.myLocation !== undefined) {
+        resolve(this.myLocation);
+      } else {
+        this.storage.get('myLocation')
+        .then(val => {
+          this.myLocation = val;
+          resolve(val);
+        });
+      }
     });
   }
 }

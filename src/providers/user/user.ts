@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { APP_CONFIG, AppConfig } from '../../app/app.config';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Http, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 
 
 
@@ -56,6 +56,18 @@ export class UserProvider {
       const options = new RequestOptions({headers: headers});
       this.http.get(`${this.baseUrl}/api/user`, options)
       .subscribe(res =>resolve(res.json()));
+    });
+  }
+
+  searchUser(token, userId){
+    return new Promise(resolve => {
+      const headers = new Headers();
+      const params = new URLSearchParams();
+      headers.append('Token', token != undefined ? token : "");
+      params.append('userId', userId);
+      const options = new RequestOptions({headers: headers, params: params});
+      this.http.get(`${this.baseUrl}/api/user/find`, options)
+      .subscribe(res => resolve(res.json()));
     });
   }
 }

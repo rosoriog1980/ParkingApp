@@ -45,7 +45,8 @@ export class ParkingDetailPage {
     const modalData = {
       cell: cell,
       parking: parking,
-      user: this.user
+      user: this.user,
+      token: this.token
     };
     const modal = this.modalCtrl.create(ModalPage,{data: modalData});
     modal.present();

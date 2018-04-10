@@ -15,6 +15,7 @@ export class HomePage {
   branchOffice: string;
   branchOfficeId: string;
   zones: any = [];
+  myLocation: any;
 
   constructor(public navCtrl: NavController,
     private parkingService: ParkingProvider,
@@ -36,17 +37,17 @@ export class HomePage {
   }
 
   ionViewWillEnter(){
-    this.parkingService.getHomeInfo(this.token, this.branchOfficeId)
-    .then(resul => {
-      this.zones = resul;
-    });
-  }
-
-  find_in_object(my_object, my_criteria){
-    return my_object.filter(function(obj) {
-      return Object.keys(my_criteria).every(function(c) {
-        return obj[c] == my_criteria[c];
-      });
+    this.singletonCache.getMyLocation()
+    .then(val => {
+      if (val !== undefined && val !== null) {
+        this.myLocation = val;
+      } else {
+        this.myLocation = undefined;
+        this.parkingService.getHomeInfo(this.token, this.branchOfficeId)
+        .then(resul => {
+          this.zones = resul;
+        });
+      }
     });
   }
 
