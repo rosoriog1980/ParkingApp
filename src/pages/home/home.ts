@@ -72,7 +72,8 @@ export class HomePage {
   viewParking(){
     const zone = {
       _id: this.myLocation.parkingZoneId,
-      zoneName: this.myLocation.parkingZoneName
+      zoneName: this.myLocation.parkingZoneName,
+      myCell: this.myLocation["cell"]["_id"]
     };
     this.clickDetails(zone);
   }

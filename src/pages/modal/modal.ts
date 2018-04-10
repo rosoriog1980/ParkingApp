@@ -46,7 +46,7 @@ export class ModalPage {
       };
       this.singletonCache.setMyLocation(myLocationData)
       .then(val => {
-        this.navCtrl.setRoot(ConfirmationPage);
+        this.viewCtrl.dismiss('updte');
       });
     });
   }

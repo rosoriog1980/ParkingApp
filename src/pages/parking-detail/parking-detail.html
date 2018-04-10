@@ -16,7 +16,8 @@
     <ion-row *ngFor="let p of parkings">
       <ion-col col-5 *ngFor="let c of p.parkings">
         <div>{{'#' + c.parkingNumber}}</div>
-        <img [src]="c.parkingStatus === 'AVAILABLE' ? 'assets/imgs/empty.png' : 'assets/imgs/Occupied.png'" (click)="showModal(c, p)">
+        <img [src]="zone.myCell && zone.myCell === c._id.toString() ? 'assets/imgs/OccupiedMine.png' : c.parkingStatus === 'AVAILABLE' ? 'assets/imgs/empty.png'
+        : 'assets/imgs/Occupied.png'" (click)="showModal(c, p)">
       </ion-col>
     </ion-row>
   </ion-grid>

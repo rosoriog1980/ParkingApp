@@ -3,12 +3,6 @@ import {  NavController, NavParams, ViewController } from 'ionic-angular';
 import { SingletonCacheProvider } from '../../providers/singleton-cache/singleton-cache';
 import { HomePage } from '../home/home';
 
-/**
- * Generated class for the ConfirmationPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 
 @Component({
@@ -18,13 +12,13 @@ import { HomePage } from '../home/home';
 
 export class ConfirmationPage {
 
-  myLocationData : any = {officeName: '', 
+  myLocationData : any = {officeName: '',
                           parkingZoneName: '',
                           cell: {
                             parkingNumber: ''
                           } };
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
     private singletonCache: SingletonCacheProvider) {
@@ -40,7 +34,7 @@ export class ConfirmationPage {
     });
   }
 
-  confirm(){    
+  confirm(){
     this.navCtrl.setRoot(HomePage);
   }
 
