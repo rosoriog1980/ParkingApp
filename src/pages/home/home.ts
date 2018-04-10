@@ -12,6 +12,7 @@ export class HomePage {
 
   token: string;
   userName: string;
+  userId: string;
   branchOffice: string;
   branchOfficeId: string;
   zones: any = [];
@@ -31,6 +32,7 @@ export class HomePage {
     this.singletonCache.getUser()
     .then(usr => {
       this.userName = usr["userName"];
+      this.userId = usr["_id"];
       this.branchOffice = usr["branchOfficeId"]["officeName"];
       this.branchOfficeId = usr["branchOfficeId"]["_id"];
     });
@@ -55,5 +57,23 @@ export class HomePage {
     this.navCtrl.push(ParkingDetailPage, {
       zone: zone
     });
+  }
+
+  releaseParking(){
+    this.parkingService.changeParkingStatus(this.token, 'AVAILABLE', this.userId, this.myLocation["cell"]["_id"])
+    .then(res => {
+      this.singletonCache.setMyLocation(null)
+      .then(res => {
+        this.navCtrl.setRoot(HomePage);
+      });
+    });
+  }
+
+  viewParking(){
+    const zone = {
+      _id: this.myLocation.parkingZoneId,
+      zoneName: this.myLocation.parkingZoneName
+    };
+    this.clickDetails(zone);
   }
 }

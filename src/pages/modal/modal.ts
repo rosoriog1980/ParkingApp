@@ -41,7 +41,8 @@ export class ModalPage {
       const myLocationData = {
         parkingZoneName: this.data["parking"]["parkingZone"]["zoneName"],
         parkingZoneId: this.data["parking"]["parkingZone"]["parkingZoneId"],
-        officeName: this.data.user["branchOfficeId"]["officeName"]
+        officeName: this.data.user["branchOfficeId"]["officeName"],
+        cell: this.data.cell
       };
       this.singletonCache.setMyLocation(myLocationData)
       .then(val => {

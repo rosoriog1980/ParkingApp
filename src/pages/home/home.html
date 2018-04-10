@@ -8,31 +8,47 @@
 </ion-header>
 
 <ion-content padding>
-
-  <h3>{{branchOffice}}</h3>
-  <ion-card>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/imgs/UserAvatar.png">
-      </ion-avatar>
-      <h2>{{userName}}</h2>
-    </ion-item>
-    <ion-card-content>
-      <p>Tenemos parqueaderos disponibles en este momento.</p>
-    </ion-card-content>
-  </ion-card>
-  <br><br><br>
-  <ion-list *ngFor="let zone of zones">
-    <ion-card (click)="clickDetails(zone)">
-      <ion-card-header>
-        {{zone.zoneName | uppercase}}
-      </ion-card-header>
+  <div *ngIf="!myLocation">
+    <h3>{{branchOffice}}</h3>
+    <ion-card>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="assets/imgs/UserAvatar.png">
+        </ion-avatar>
+        <h2>{{userName}}</h2>
+      </ion-item>
       <ion-card-content>
-        <ion-item>
-          <ion-badge item-end [color]="zone.count > 0 ? 'secondary' : 'danger'">{{zone.count}}</ion-badge>
-        </ion-item>
+        <p>Tenemos parqueaderos disponibles en este momento.</p>
       </ion-card-content>
     </ion-card>
-  </ion-list>
-
+    <br><br><br>
+    <ion-list *ngFor="let zone of zones">
+      <ion-card (click)="clickDetails(zone)">
+        <ion-card-header>
+          {{zone.zoneName | uppercase}}
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>
+            <ion-badge item-end [color]="zone.count > 0 ? 'secondary' : 'danger'">{{zone.count}}</ion-badge>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
+  <div *ngIf="myLocation">
+    <h3>Hola:</h3>
+    <h3>{{userName}}</h3>
+    <p>En este momento estas estacionado en:</p>
+    <br>
+    <h3>{{branchOffice}}</h3>
+    <h3>{{myLocation.parkingZoneName + ' - Celda ' + myLocation.cell.parkingNumber}}</h3>
+    <br>
+    <button ion-button full round color="secondary" (click)="viewParking()">
+      Ver mi parqueadero.
+    </button>
+    <br>
+    <button ion-button full round (click)="releaseParking()">
+      Liberar parqueadero.
+    </button>
+  </div>
 </ion-content>
