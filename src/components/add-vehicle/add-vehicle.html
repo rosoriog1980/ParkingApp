@@ -1,29 +1,42 @@
-<ion-card *ngIf="addCarVisible">
+<ion-card class="customCard" *ngIf="addCarVisible">
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4>
+        <ion-avatar class="customImgAvatar">
+          <img class="roundImg" src="assets/imgs/CarAvatar.png">
+        </ion-avatar>
+      </ion-col>
+      <ion-col col-8>
+        <div>
+          <div class="customSlct">
+            <ion-item>
+              <ion-label class="customLabel" fixed>Marca: </ion-label>
+              <ion-select [(ngModel)]="selectedBrand">
+                <ion-option value="" selected="true">Seleccione...</ion-option>
+                <ion-option *ngFor="let b of brands" value="{{b}}">{{b}}</ion-option>
+              </ion-select>
+            </ion-item>
+          </div>
+        </div>
+        <div class="cardPadding">
+          <div class="customSlct">
+            <ion-item>
+              <ion-label class="customLabel" fixed>Color: </ion-label>
+              <ion-select [(ngModel)]="selectedColor">
+                <ion-option value="" selected="true">Seleccione...</ion-option>
+                <ion-option *ngFor="let c of colors" value="{{c}}">{{c}}</ion-option>
+              </ion-select>
+            </ion-item>
+          </div>
+        </div>
+        <ion-item class="cardPadding">
+          <ion-input placeholder="Placa -- HHH555" [(ngModel)]= "licencePlate"></ion-input>>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <ion-item>
-    <ion-avatar>
-      <img src="assets/imgs/CarAvatar.png">
-    </ion-avatar>
-  </ion-item>
-  <ion-item>
-    <ion-label fixed>Marca: </ion-label>
-    <ion-select [(ngModel)]="selectedBrand">
-      <ion-option value="" selected="true">Seleccione...</ion-option>
-      <ion-option *ngFor="let b of brands" value="{{b}}">{{b}}</ion-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
-    <ion-label fixed>Color: </ion-label>
-    <ion-select [(ngModel)]="selectedColor">
-      <ion-option value="" selected="true">Seleccione...</ion-option>
-      <ion-option *ngFor="let c of colors" value="{{c}}">{{c}}</ion-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
-    <ion-label fixed>Placa: </ion-label>
-    <ion-input placeholder="HHH555" [(ngModel)]= "licencePlate"></ion-input>>
-  </ion-item>
-  <ion-item>
-    <button ion-button color="light" (click)="cancelAddVehicle()">Cancelar</button>
-    <button ion-button color="light" (click)="newVehicle()">Agregar</button>
+    <button ion-button full class="customBtn" (click)="newVehicle()">Agregar</button>
+    <button ion-button full (click)="cancelAddVehicle()">Cancelar</button>
   </ion-item>
 </ion-card>

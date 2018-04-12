@@ -1,3 +1,40 @@
 add-vehicle {
+  .customImgAvatar{
+    max-width: 100px;
+    max-height: 100px;
+  }
 
+  .roundImg{
+    border-radius: 100px;
+  }
+
+  .customCard{
+    background-color: transparent;
+  }
+
+  .customSlct{
+    opacity: 0.3;
+    border-radius: 100px;
+    background-color: #FFFFFF;
+    margin-right: 6px;
+    margin-left: 15px,
+  }
+
+  .select-md {
+    padding: 13px 4px 13px 0px;
+  }
+
+  .customLabel {
+    margin: 13px -27px 13px 0;
+  }
+
+  .cardPadding{
+    padding-top: 5px;
+  }
+
+  .item-button{
+    background-color: transparent !important;
+    border-color: #FFFFFF;
+    border: solid;
+  }
 }

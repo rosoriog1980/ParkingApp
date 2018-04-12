@@ -1,32 +1,33 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Registrarme</ion-title>
+
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-item>
+  <ion-item class="customPadding">
     <ion-avatar item-start>
       <img src="assets/imgs/UserAvatar.png">
     </ion-avatar>
   </ion-item>
-  <ion-item>
+  <ion-item class="customPadding">
     <ion-input [(ngModel)]="newUser.userName" placeholder="Tu nombre completo"></ion-input>
   </ion-item>
-  <ion-item>
+  <ion-item class="customPadding">
     <ion-input [(ngModel)]= "newUser.userEmail" type="email" placeholder="Correo PSL"></ion-input>
   </ion-item>
-  <ion-item>
-    <ion-label fixed>Sedes: </ion-label>
-    <ion-select [(ngModel)]="newUser.branchOfficeId">
-      <ion-option value="" selected="true">Seleccione...</ion-option>
-      <ion-option *ngFor="let o of branchOffices" value="{{o._id}}">{{o.officeName}}</ion-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
+  <div class="customPadding">
+    <div class="customSelect">
+      <ion-item>
+        <ion-label fixed>Sedes: </ion-label>
+        <ion-select [(ngModel)]="newUser.branchOfficeId">
+          <ion-option value="" selected="true">Seleccione...</ion-option>
+          <ion-option *ngFor="let o of branchOffices" value="{{o._id}}">{{o.officeName}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+  </div>
+  <ion-item class="customPadding">
     <ion-input [(ngModel)]= "newUser.userTelNumber" placeholder="Celular"></ion-input>>
   </ion-item>
   <ion-item>
@@ -38,7 +39,9 @@
     <vehicle-list [listOfVehicles]="vehicles"></vehicle-list>
   </ion-item>
   <ion-item>
-    <button ion-button round (click)="cancel()">Cancelar</button>
-    <button ion-button round (click)="registerNewUser()">Registrarme</button>
+      <button ion-button full round (click)="registerNewUser()">Registrarme</button>
+  </ion-item>
+  <ion-item>
+    <button ion-button full round (click)="cancel()">Cancelar</button>
   </ion-item>
 </ion-content>

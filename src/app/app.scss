@@ -14,3 +14,46 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+
+.content{
+  background: radial-gradient(circle, #1493B0 0%, #154C5C 100%);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.toolbar-background-md {
+  border-color: transparent;
+  background: transparent;
+}
+
+.content .item{
+  background-color: transparent;
+}
+
+.item-md.item-block .item-inner {
+  border-bottom: 0px;
+}
+
+.item .input{
+  opacity: 0.3;
+  border-radius: 100px;
+  background-color: #FFFFFF;
+}
+
+.content .list .item
+{
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 0px;
+}
+
+.content .list .item-inner{
+  border-bottom: 0px;
+}
+
+.item-md .item-button{
+  border-radius: 100px;
+  background-color: #FF6500;
+  height: 50px;
+}

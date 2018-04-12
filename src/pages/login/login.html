@@ -1,20 +1,15 @@
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>login</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
 
 <ion-content padding>
+  <br><br><br><br><br>
   <ion-item>
-    <img src="assets/imgs/parqueo.png">
+    <h1 ion-text color="totalWhite">Ingresar</h1>
   </ion-item>
+  <br><br>
   <ion-list>
     <ion-item>
-      <ion-input placeholder="Ingresa tu correo de PSL." [(ngModel)]="user"></ion-input>
+      <ion-input ion-text color="danger" placeholder="Correo de PSL." [(ngModel)]="user"></ion-input>
     </ion-item>
+    <br>
     <ion-item>
       <ion-input type="password" placeholder="contraseña" [(ngModel)]="pwd"></ion-input>
     </ion-item>
@@ -22,11 +17,10 @@
   <br>
   <br>
   <ion-item>
-      <button ion-button clear>Olvidaste tu contraseña</button>
-      <button ion-button clear (click)="register()">Registrarse</button>
-  </ion-item>
-  <br>
-  <ion-item>
     <button ion-button full (click)="login()">Ingresar</button>
+  </ion-item>
+  <ion-item>
+      <ion-label ion-text color="light"><u>¿Olvidaste tu contraseña?</u></ion-label>
+      <ion-label ion-text color="light" (click)="register()"><u>Registrarse</u></ion-label>
   </ion-item>
 </ion-content>
