@@ -1,3 +1,28 @@
 page-modal {
+  .textColor{
+    color: #FFFFFF;
+    text-align: center;
+  }
 
+  .item-md p{
+    color: #FFFFFF;
+  }
+
+  .card-md h2{
+    color:#FFFFFF;
+  }
+
+  .content{
+    background: rgba(0,0,0,0.8);
+  }
+
+  .customIonCard{
+    background-color: transparent;
+  }
+
+  .border{
+    border: solid;
+    border-color: #FFFFFF;
+    border-radius: 50px;
+  }
 }

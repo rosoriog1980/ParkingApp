@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, MenuController } from 'ionic-angular';
 import { ParkingProvider } from '../../providers/parking/parking';
 import { SingletonCacheProvider } from '../../providers/singleton-cache/singleton-cache';
 import { ParkingDetailPage } from '../parking-detail/parking-detail';
@@ -20,7 +20,9 @@ export class HomePage {
 
   constructor(public navCtrl: NavController,
     private parkingService: ParkingProvider,
-    private singletonCache: SingletonCacheProvider) {
+    private singletonCache: SingletonCacheProvider,
+    private menu: MenuController) {
+      menu.enable(true);
     }
 
   ionViewDidLoad(){
@@ -54,6 +56,7 @@ export class HomePage {
   }
 
   clickDetails(zone){
+    zone.officeName = this.branchOffice;
     this.navCtrl.push(ParkingDetailPage, {
       zone: zone
     });

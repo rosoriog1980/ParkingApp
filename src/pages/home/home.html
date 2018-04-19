@@ -1,30 +1,33 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
+
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-fab top right edge>
+    <button ion-fab menuToggle>
+      <ion-icon class="customIcon" name="car"></ion-icon>
+      <ion-badge class="customBadge" color="dark">{{userName | slice:0:1}}</ion-badge>
+    </button>
+  </ion-fab>
   <div *ngIf="!myLocation">
     <h3>{{branchOffice}}</h3>
-    <ion-card>
+    <ion-card class="customCard">
       <ion-item>
         <ion-avatar item-start>
           <img src="assets/imgs/UserAvatar.png">
         </ion-avatar>
-        <h2>{{userName}}</h2>
+        <h2 class="textColor">{{userName}}</h2>
       </ion-item>
       <ion-card-content>
-        <p>Tenemos parqueaderos disponibles en este momento.</p>
+        <p class="textColor">Tenemos parqueaderos disponibles en este momento.</p>
       </ion-card-content>
     </ion-card>
-    <br><br><br>
+    <br><br>
     <ion-list *ngFor="let zone of zones">
-      <ion-card (click)="clickDetails(zone)">
-        <ion-card-header>
+      <ion-card class="customCard" (click)="clickDetails(zone)">
+        <ion-card-header class="textColor">
           {{zone.zoneName | uppercase}}
         </ion-card-header>
         <ion-card-content>
@@ -38,14 +41,19 @@
   <div *ngIf="myLocation">
     <h3>Hola:</h3>
     <h3>{{userName}}</h3>
+    <br>
     <p>En este momento estas estacionado en:</p>
     <br>
     <h3>{{branchOffice}}</h3>
     <h3>{{myLocation.parkingZoneName + ' - Celda ' + myLocation.cell.parkingNumber}}</h3>
     <br>
+    <p>Puedes revisar el piso y la celda que estas ocupando en el siguiente enlace:</p>
+    <br>
     <button ion-button full round color="secondary" (click)="viewParking()">
       Ver mi parqueadero.
     </button>
+    <br>
+    <p>Si deseas liberar la celda en este momento, puedes hacerlo aquí:</p>
     <br>
     <button ion-button full round (click)="releaseParking()">
       Liberar parqueadero.

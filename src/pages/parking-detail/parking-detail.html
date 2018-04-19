@@ -2,16 +2,23 @@
 <ion-header>
 
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>{{zone.zoneName | uppercase}}</ion-title>
+
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-fab top right edge>
+    <button ion-fab menuToggle>
+      <ion-icon class="customIcon" name="car"></ion-icon>
+      <ion-badge class="customBadge" color="dark">{{ user.userName| slice:0:1}}</ion-badge>
+    </button>
+  </ion-fab>
+  <br>
+  <h3 class="textAlign">{{zone.officeName + ' - ' + zone.zoneName}}</h3>
+  <br>
+  <p class="textAlign">Selecciona la celda donde deseas estacionar tu vehículo:</p>
   <ion-grid >
     <ion-row *ngFor="let p of parkings">
       <ion-col col-5 *ngFor="let c of p.parkings">

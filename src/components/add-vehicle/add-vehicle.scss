@@ -10,14 +10,7 @@ add-vehicle {
 
   .customCard{
     background-color: transparent;
-  }
-
-  .customSlct{
-    opacity: 0.3;
-    border-radius: 100px;
-    background-color: #FFFFFF;
-    margin-right: 6px;
-    margin-left: 15px,
+    box-shadow: none !important;
   }
 
   .select-md {
@@ -28,6 +21,10 @@ add-vehicle {
     margin: 13px -27px 13px 0;
   }
 
+  .flexLabel{
+    flex-grow: 1 !important;
+  }
+
   .cardPadding{
     padding-top: 5px;
   }
@@ -36,5 +33,10 @@ add-vehicle {
     background-color: transparent !important;
     border-color: #FFFFFF;
     border: solid;
+    height: 41px;
+    font-family: 'Lato', sans-serif;
+    box-shadow: none !important;
+    font-size: 14px !important;
+    text-transform: uppercase;
   }
 }

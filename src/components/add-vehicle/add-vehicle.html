@@ -2,41 +2,31 @@
   <ion-grid>
     <ion-row>
       <ion-col col-4>
-        <ion-avatar class="customImgAvatar">
-          <img class="roundImg" src="assets/imgs/CarAvatar.png">
-        </ion-avatar>
+        <div class="carImage">
+          <div>Subir foto del vehículo</div>
+        </div>
       </ion-col>
       <ion-col col-8>
-        <div>
-          <div class="customSlct">
+        <div class="selectPadding noPaddingRight">
+          <div class="customSelect">
             <ion-item>
-              <ion-label class="customLabel" fixed>Marca: </ion-label>
               <ion-select [(ngModel)]="selectedBrand">
-                <ion-option value="" selected="true">Seleccione...</ion-option>
+                <ion-option value="" selected="true">Marca</ion-option>
                 <ion-option *ngFor="let b of brands" value="{{b}}">{{b}}</ion-option>
               </ion-select>
             </ion-item>
           </div>
         </div>
-        <div class="cardPadding">
-          <div class="customSlct">
-            <ion-item>
-              <ion-label class="customLabel" fixed>Color: </ion-label>
-              <ion-select [(ngModel)]="selectedColor">
-                <ion-option value="" selected="true">Seleccione...</ion-option>
-                <ion-option *ngFor="let c of colors" value="{{c}}">{{c}}</ion-option>
-              </ion-select>
-            </ion-item>
-          </div>
-        </div>
-        <ion-item class="cardPadding">
-          <ion-input placeholder="Placa -- HHH555" [(ngModel)]= "licencePlate"></ion-input>>
+        <ion-item class="noPaddingRight">
+          <ion-input class="normalInput" placeholder="Color" [(ngModel)]= "selectedColor"></ion-input>>
+        </ion-item>
+        <ion-item class="noPaddingRight">
+          <ion-input class="normalInput" placeholder="Placa" [(ngModel)]= "licencePlate"></ion-input>>
         </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>
   <ion-item>
     <button ion-button full class="customBtn" (click)="newVehicle()">Agregar</button>
-    <button ion-button full (click)="cancelAddVehicle()">Cancelar</button>
   </ion-item>
 </ion-card>

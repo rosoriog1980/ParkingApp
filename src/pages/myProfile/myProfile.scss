@@ -1,3 +1,40 @@
 page-myProfile {
+  .customButton{
+    background-color: transparent !important;
+    border-color: #FFFFFF;
+    border: solid;
+  }
 
+  .label-md{
+    color: #FFFFFF;
+  }
+
+  .customBadge{
+    border-radius: 20px;
+    margin-bottom: 22px;
+  }
+
+  .customIcon{
+    margin-left: 4px;
+  }
+
+  .customSelect{
+    opacity: 0.3;
+    border-radius: 100px;
+    background-color: #FFFFFF;
+    margin-right: 6px;
+  }
+
+  .customLabel{
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 5px;
+  }
+
+  .customInput{
+    opacity: 0.3;
+    border-radius: 100px;
+    background-color: #FFFFFF;
+    margin-right: 5px,
+  }
 }

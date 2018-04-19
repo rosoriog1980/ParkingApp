@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController} from 'ionic-angular';
+import { NavController, NavParams, AlertController, MenuController} from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { SingletonCacheProvider } from '../../providers/singleton-cache/singleton-cache';
 import { SharedParamsProvider } from '../../providers/shared-params/shared-params';
@@ -22,7 +22,9 @@ export class MyProfilePage {
     private userService: UserProvider,
     private singletonCache: SingletonCacheProvider,
     public paramService: SharedParamsProvider,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,
+    private menu: MenuController) {
+      menu.enable(true);
 
       this.user = {
         userName: "",
@@ -35,7 +37,14 @@ export class MyProfilePage {
 
     modifyUser(){
       this.user.vehicles = this.vehicles;
-      this.userService.updateUser(this.user, this.token)
+      const userUpd = {
+        _id: this.user._id,
+        userTelNumber: this.user.userTelNumber,
+        branchOfficeId: this.user.branchOfficeId,
+        vehicles: this.user.vehicles
+      };
+
+      this.userService.updateUser(userUpd, this.token)
       .then(val => {
         this.editMode = false;
         this.singletonCache.setUser(this.user)
@@ -64,8 +73,8 @@ export class MyProfilePage {
       this.paramService.getBranchOffices()
       .then(data => {
         this.branchOffices = data;
+        this.setInitialState();
       });
-      this.setInitialState();
     }
 
     addVehiccle(vehicle){

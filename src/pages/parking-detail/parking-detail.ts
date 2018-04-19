@@ -13,7 +13,7 @@ import { ConfirmationPage } from '../confirmation/confirmation';
 export class ParkingDetailPage {
   zone: any;
   token: string;
-  user: any;
+  user: any = {userName: ''};
   parkings: any = [];
 
   constructor(public navCtrl: NavController,

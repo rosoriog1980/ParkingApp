@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, MenuController } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { UserProvider } from '../../providers/user/user';
 import { HomePage } from '../home/home';
@@ -18,7 +18,9 @@ export class LoginPage {
     public navParams: NavParams,
     private userService: UserProvider,
     private alertCtrl: AlertController,
-    private singletonCache: SingletonCacheProvider) {
+    private singletonCache: SingletonCacheProvider,
+    private menu: MenuController) {
+      menu.enable(false);
   }
 
   register(){

@@ -1,36 +1,37 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{data.parking.parkingZone.zoneName + ' Celda ' +  data.cell.parkingNumber}}</ion-title>
-    <ion-buttons end>
-      <button ion-button (click)="closeModal()">Cerrar</button>
-    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-item>
-    <br>
-  </ion-item>
+  <h2 class="textColor">{{data.parking.parkingZone.zoneName + ' Celda ' +  data.cell.parkingNumber}}</h2>
+  <br>
   <div *ngIf="parkingScreenMode">
     <div *ngIf="!selectedVehicle">
       <ion-item>
-        <p>Que vehículo vas a estacionar?.</p>
+        <p class="textColor">Que vehículo deseas estacionar?</p>
       </ion-item>
-      <ion-item>
-        <vehicle-list [listOfVehicles]="vehicles" (carSelected)="selectVehicle($event)"></vehicle-list>
-      </ion-item>
+      <div class="border">
+        <ion-item>
+          <vehicle-list [listOfVehicles]="vehicles" (carSelected)="selectVehicle($event)"></vehicle-list>
+        </ion-item>
+      </div>
     </div>
     <div *ngIf="selectedVehicle">
-      <ion-item>
-        <ion-card>
-          <ion-card-header>
-            {{selectedVehicle.vehicleBrand + ' ' + selectedVehicle.vehicleLicensePlate}}
-          </ion-card-header>
-        </ion-card>
-      </ion-item>
+      <div class="border">
+        <ion-item>
+          <ion-card class="customIonCard">
+            <ion-card-header class="textColor">
+              {{selectedVehicle.vehicleBrand + ' ' + selectedVehicle.vehicleLicensePlate}}
+              <ion-icon name="checkmark-circle">
+              </ion-icon>
+            </ion-card-header>
+          </ion-card>
+        </ion-item>
+      </div>
       <ion-item>
         <p>Escanea el código QR para activar la celda.</p>
       </ion-item>
@@ -38,27 +39,32 @@
         <img src="assets/imgs/QR.png" (click)="updateParkingStatus()">
       </ion-item>
     </div>
+    <ion-item>
+      <button ion-button full round (click)="closeModal()">Cancelar</button>
+    </ion-item>
   </div>
   <div *ngIf="!parkingScreenMode">
     <ion-item>
-      <p>Esta celda actualmente está acupada por:</p>
+      <p class="textColor">Esta celda actualmente está acupada por:</p>
     </ion-item>
-    <ion-item>
-      <ion-card>
-        <ion-item>
-          <ion-avatar item-start>
-            <img src="assets/imgs/UserAvatar.png">
-          </ion-avatar>
-          <h2>{{searchedUser.userName}}</h2>
-          <h2>{{'Tel: ' + searchedUser.userTelNumber}}</h2>
-          <p><i>Vehiculos:</i></p>
-          <div *ngFor="let v of searchedUser.vehicles">
-            <p>{{v.vehicleBrand + ' ' + v.vehicleColor}}</p>
-            <p>{{v.vehicleLicensePlate}}</p>
-          </div>
-        </ion-item>
-      </ion-card>
-    </ion-item>
+    <div class="border">
+      <ion-item>
+        <ion-card class="customIonCard">
+          <ion-item>
+            <ion-avatar item-start>
+              <img src="assets/imgs/UserAvatar.png">
+            </ion-avatar>
+            <h2>{{searchedUser.userName}}</h2>
+            <h2>{{'Tel: ' + searchedUser.userTelNumber}}</h2>
+            <p><i>Vehiculos:</i></p>
+            <div *ngFor="let v of searchedUser.vehicles">
+              <p>{{v.vehicleBrand + ' ' + v.vehicleColor}}</p>
+              <p>{{v.vehicleLicensePlate}}</p>
+            </div>
+          </ion-item>
+        </ion-card>
+      </ion-item>
+    </div>
     <ion-item>
       <button ion-button full round (click)="closeModal()">Aceptar</button>
     </ion-item>

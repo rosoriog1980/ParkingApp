@@ -1,47 +1,46 @@
 <ion-header>
+    <div class="iconLogoImg">
+      <img src="assets/imgs/icon-logo-parqueo-app.png">
+    </div>
   <ion-navbar>
 
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-item class="customPadding">
-    <ion-avatar item-start>
-      <img src="assets/imgs/UserAvatar.png">
-    </ion-avatar>
+  <br>
+  <ion-item>
+      <h1 class="ppalTitle" ion-text color="totalWhite">Crear nueva cuenta</h1>
   </ion-item>
-  <ion-item class="customPadding">
-    <ion-input [(ngModel)]="newUser.userName" placeholder="Tu nombre completo"></ion-input>
+  <br>
+  <ion-item>
+    <ion-input class="normalInput" [(ngModel)]="newUser.userName" placeholder="Tu nombre completo"></ion-input>
   </ion-item>
-  <ion-item class="customPadding">
-    <ion-input [(ngModel)]= "newUser.userEmail" type="email" placeholder="Correo PSL"></ion-input>
+  <ion-item>
+    <ion-input class="normalInput" [(ngModel)]= "newUser.userEmail" type="email" placeholder="Correo PSL"></ion-input>
   </ion-item>
-  <div class="customPadding">
+  <div class="selectPadding">
     <div class="customSelect">
       <ion-item>
-        <ion-label fixed>Sedes: </ion-label>
         <ion-select [(ngModel)]="newUser.branchOfficeId">
-          <ion-option value="" selected="true">Seleccione...</ion-option>
+          <ion-option value="" selected="true">Sede</ion-option>
           <ion-option *ngFor="let o of branchOffices" value="{{o._id}}">{{o.officeName}}</ion-option>
         </ion-select>
       </ion-item>
     </div>
   </div>
-  <ion-item class="customPadding">
-    <ion-input [(ngModel)]= "newUser.userTelNumber" placeholder="Celular"></ion-input>>
+  <ion-item>
+    <ion-input class="normalInput" [(ngModel)]= "newUser.userTelNumber" placeholder="Celular"></ion-input>>
   </ion-item>
   <ion-item>
-    <h1>Vehiculos</h1>
-    <ion-icon name="md-add-circle" item-end color="secondary" (click)="addCarVisible = !addCarVisible"></ion-icon>
+    <h1 class="secondaryTitle" ion-text color="totalWhite">Vehículos</h1>
+    <div class="addCarBtn" item-end (click)="addCarVisible = !addCarVisible" *ngIf="vehicles.length > 0"><u>Adicionar otro vehículo</u></div>
   </ion-item>
   <add-vehicle [addCarVisible]="addCarVisible" (carAdded)="addVehiccle($event)" (failedValidation)="PresentAlert($event)"></add-vehicle>
   <ion-item *ngIf="vehicles != undefined && vehicles.length > 0">
     <vehicle-list [listOfVehicles]="vehicles"></vehicle-list>
   </ion-item>
   <ion-item>
-      <button ion-button full round (click)="registerNewUser()">Registrarme</button>
-  </ion-item>
-  <ion-item>
-    <button ion-button full round (click)="cancel()">Cancelar</button>
+      <button class="btnLogin" ion-button full round (click)="registerNewUser()">Registrarse</button>
   </ion-item>
 </ion-content>

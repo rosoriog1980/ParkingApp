@@ -1,6 +1,29 @@
 page-home {
     h3{
         width: 100%;
-        text-align: center; 
+        text-align: center;
+        color: #FFFFFF;
+    }
+
+    .customCard{
+      background-color: transparent;
+    }
+
+    .textColor{
+      color: #FFFFFF;
+    }
+
+    .customBadge{
+      border-radius: 20px;
+      margin-bottom: 22px;
+    }
+
+    .customIcon{
+      margin-left: 4px;
+    }
+
+    p{
+      text-align: center;
+      color: #FFFFFF;
     }
 }

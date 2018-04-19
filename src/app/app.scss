@@ -15,10 +15,10 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+@import url('https://fonts.googleapis.com/css?family=Lato');
 
 .content{
   background: radial-gradient(circle, #1493B0 0%, #154C5C 100%);
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .toolbar-background-md {
@@ -32,12 +32,12 @@
 
 .item-md.item-block .item-inner {
   border-bottom: 0px;
+
 }
 
 .item .input{
-  opacity: 0.3;
   border-radius: 100px;
-  background-color: #FFFFFF;
+  background-color: rgba(255,255,255,0.3);
 }
 
 .content .list .item
@@ -56,4 +56,215 @@
   border-radius: 100px;
   background-color: #FF6500;
   height: 50px;
+}
+
+.toolbar-title-md, .customText{
+  color:#FFFFFF;
+}
+
+.ppalTitle{
+  font-family: 'Lato', sans-serif;
+  font-size: 26px !important;
+  margin-left: 20px !important;
+}
+
+.secondaryTitle{
+  font-family: 'Lato', sans-serif;
+  font-size: 22px !important;
+  margin-left: 20px !important;
+}
+
+.thirdTitle{
+  font-family: 'Lato', sans-serif;
+  font-size: 22px !important;
+  color:#FFFFFF;
+}
+
+.loginInput{
+  display: block;
+  height: 56px;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px !important;
+  margin-bottom: 10px;
+  input{
+    color: #FFFFFF;
+    font-size: 16px !important;
+    margin: 18px 20px;
+  }
+
+  input::placeholder {
+    color: rgba(255,255,255,0.6);
+    font-size: 16px !important;
+  }
+}
+
+.accountInput{
+  display: block;
+  height: 56px;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px !important;
+  margin-bottom: 10px;
+  input{
+    color: #FFFFFF;
+    font-size: 16px !important;
+    margin: 9px 20px;
+  }
+
+  input::placeholder {
+    color: rgba(255,255,255,0.6);
+    font-size: 16px !important;
+  }
+}
+
+.normalInput{
+  display: block;
+  height: 40px;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px !important;
+  margin-bottom: 10px;
+  input{
+    color: #FFFFFF;
+    font-size: 16px !important;
+    margin: 9px 20px;
+  }
+
+  input::placeholder {
+    color: rgba(255,255,255,0.6);
+    font-size: 16px !important;
+  }
+}
+.addCarBtn{
+  font-family: 'Lato', sans-serif;
+  font-size: 12px !important;
+  color: #B8F6FF;
+}
+
+.btnLogin{
+  height: 56px;
+  font-family: 'Lato', sans-serif;
+  box-shadow: none !important;
+  font-size: 16px !important;
+  text-transform: uppercase;
+}
+
+.forgetRegister{
+  margin: 0 auto;
+  text-align: center;
+  .input-wrapper{
+    display: block;
+    .label{
+      display: inline;
+      margin: 0 15px;
+      font-family: 'Lato', sans-serif;
+      font-size: 15px;
+    }
+  }
+}
+
+.item-md.item-block .item-inner {
+  padding-right: 0px;
+}
+
+.label-md {
+  margin: 13px 0;
+}
+
+.iconLogoImg{
+  text-align: center;
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  margin-left: -20px;
+}
+
+.customSelect{
+  border-radius: 100px;
+  background-color: rgba(255,255,255,0.3);
+  height: 40px;
+  margin-bottom: 10px;
+  .select-md{
+    position: relative;
+    padding: 10px 8px 0 5px;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    display: inline-block;
+    width: 100%;
+    max-width: 100%;
+    .select-icon {
+      position: absolute;
+      width: 12px;
+      height: 19px;
+      right: 10px;
+      top: 10px;
+      .select-icon-inner {
+        left: 5px;
+        top: 50%;
+        margin-top: -3px;
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-top: 7px solid;
+        border-right: 7px solid transparent;
+        border-left: 7px solid transparent;
+        color: #FFFFFF;
+        pointer-events: none;
+      }
+    }
+    .select-text{
+      color: rgba(255,255,255,0.6);
+    }
+  }
+  .input-wrapper{
+    display: block;
+  }
+}
+
+.carImage{
+  border-radius: 10px;
+  height: 140px;
+  width: 120px;
+  background-color: rgba(245,245,245,0.6);
+  background-image: url("../assets/imgs/camera-logo.png");
+  background-size: 60px 42px;
+  background-repeat: no-repeat;
+  background-position: 48% 24%;
+  display: flex;
+  align-items: center;
+  div{
+    margin-top: 60px;
+    margin-left: 11px;
+    padding: 0 13px;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    color: #546375;
+    width: 100px;
+    text-align: center;
+  }
+}
+
+.carImage2{
+  border-radius: 10px;
+  height: 140px;
+  width: 120px;
+}
+
+.header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+  background-image: none;
+}
+
+.item-md {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.selectPadding{
+  padding: 0 16px;
+}
+
+.noPaddingRight{
+  padding-right: 0 !important;
+}
+
+.noPadding{
+  padding: 0 !important;
 }

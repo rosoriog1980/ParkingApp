@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams, ViewController } from 'ionic-angular';
+import {  NavController, NavParams, ViewController, MenuController } from 'ionic-angular';
 import { SingletonCacheProvider } from '../../providers/singleton-cache/singleton-cache';
 import { HomePage } from '../home/home';
 
@@ -21,7 +21,9 @@ export class ConfirmationPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
-    private singletonCache: SingletonCacheProvider) {
+    private singletonCache: SingletonCacheProvider,
+    private menu: MenuController) {
+      menu.enable(false);
   }
 
   ionViewWillEnter(){

@@ -3,4 +3,25 @@ page-parking-detail {
     text-align: center;
   }
 
+  .textAlign{
+    text-align: center;
+  }
+
+  .content-md{
+    color: #FFFFFF;
+  }
+
+  .customBadge{
+    border-radius: 20px;
+    margin-bottom: 22px;
+  }
+
+  .customIcon{
+    margin-left: 4px;
+  }
+
+  .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default {
+    color: #FFFFFF;
+    background-color: transparent;
+  }
 }

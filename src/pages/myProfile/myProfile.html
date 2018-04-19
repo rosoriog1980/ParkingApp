@@ -1,38 +1,57 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Mi perfil</ion-title>
+
   </ion-navbar>
 </ion-header>
 
 
 
 <ion-content>
+  <ion-fab top right edge>
+    <button ion-fab menuToggle>
+      <ion-icon class="customIcon" name="car"></ion-icon>
+      <ion-badge class="customBadge" color="dark">{{user.userName | slice:0:1}}</ion-badge>
+    </button>
+  </ion-fab>
+  <br>
   <ion-item>
     <ion-avatar item-start>
       <img src="assets/imgs/UserAvatar.png">
     </ion-avatar>
     {{user.userName}}
-    <button ion-button item-end icon-left outline (click)="editClick()">
+    <button ion-button item-end icon-left (click)="editClick()" class="customButton">
       <ion-icon [name]="editMode ? 'ios-close' : 'ios-create'" item-end></ion-icon>
       {{editMode ? "Cancelar" : "Editar"}}
     </button>
   </ion-item>
-  <ion-item>
-    <ion-label fixed>Sede: </ion-label>
-    <ion-label *ngIf="!editMode">{{user.branchOffice}}</ion-label>
-    <ion-select *ngIf="editMode" [(ngModel)]="user.branchOfficeId">
-      <ion-option value="" selected="true">Seleccione...</ion-option>
-      <ion-option *ngFor="let o of branchOffices" value="{{o._id}}">{{o.officeName}}</ion-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
-    <ion-label fixed>Celular: </ion-label>
-    <ion-label *ngIf="!editMode">{{user.userTelNumber}}</ion-label>
-    <ion-input placeholder="Celular" *ngIf="editMode" [(ngModel)]="user.userTelNumber"></ion-input>>
-  </ion-item>
+  <div *ngIf="!editMode" class="customLabel">
+    <ion-item>
+      <ion-label >Sede: </ion-label>
+      <ion-label>{{user.branchOffice}}</ion-label>
+    </ion-item>
+  </div>
+  <div class="customLabel">
+    <div *ngIf="editMode" class="customSelect">
+      <ion-item>
+        <ion-label fixed>Sede: </ion-label>
+        <ion-select   [(ngModel)]="user.branchOfficeId._id">
+          <ion-option value="" selected="true">Seleccione...</ion-option>
+          <ion-option *ngFor="let o of branchOffices" value="{{o._id}}">{{o.officeName}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+  </div>
+  <div *ngIf="!editMode" class="customLabel">
+    <ion-item>
+      <ion-label fixed>Celular: </ion-label>
+      <ion-label>{{user.userTelNumber}}</ion-label>
+    </ion-item>
+  </div>
+  <div class="customLabel">
+    <div *ngIf="editMode" class="customInput">
+      <ion-input placeholder="Celular"  [(ngModel)]="user.userTelNumber"></ion-input>
+    </div>
+  </div>
   <ion-item>
     <h1>Mis Vehiculos</h1>
     <ion-icon name="md-add-circle" item-end color="secondary" (click)="addCarVisible = !addCarVisible" *ngIf="editMode"></ion-icon>
@@ -42,7 +61,7 @@
     <vehicle-list [listOfVehicles]="vehicles"></vehicle-list>
   </ion-item>
   <ion-item *ngIf="editMode">
-    <button ion-button round (click)="modifyUser()">Guardar</button>
+    <button ion-button full round (click)="modifyUser()">Guardar</button>
   </ion-item>
   <ion-item *ngIf="!editMode">
     <button ion-button full icon-left round (click)="logout()">
